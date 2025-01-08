@@ -7,7 +7,6 @@ import type {
   BorderWidths,
 } from '@/theme/types/borders';
 import type { UnionConfiguration } from '@/theme/types/config';
-
 import { config } from '@/theme/_config';
 
 /**

@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { MMKV } from 'react-native-mmkv';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-// import { apolloDevToolsInit } from 'react-native-apollo-devtools-client';
+import { apolloDevToolsInit } from 'react-native-apollo-devtools-client';
 import { ThemeProvider } from '@/theme';
 import '@/translations';
 
@@ -25,9 +25,7 @@ const client = new ApolloClient({
     uri: 'http://localhost:3000/graphql',
     cache: new InMemoryCache()
 });
-// if (__DEV__) {
-//     apolloDevToolsInit(client);
-// }
+if (__DEV__) apolloDevToolsInit(client);
 
 interface AppInitProviderProps {
     children: React.ReactNode;

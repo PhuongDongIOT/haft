@@ -1,21 +1,19 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import { Link, router } from 'expo-router'
+import { FC } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Link, router } from 'expo-router';
+import SkeletonLoader from '@/components/atoms/Skeleton/Skeleton';
 
-type Props = {}
-
-const SignInScreen = (props: Props) => {
+interface SignInScreenProps { }
+const SignInScreen: FC<SignInScreenProps> = ({ }) => {
   return (
     <View style={styles.container}>
-      <Text>SignIn Screen</Text>
-      {/* <Link href={"/(tabs)"} asChild> */}
-        <TouchableOpacity onPress={() => {
-          router.dismissAll();
-          router.push('/(tabs)');
-        }}>
-          <Text>Go to App Home Screen</Text>
-        </TouchableOpacity>
-      {/* </Link> */}
+      <TouchableOpacity onPress={() => {
+        router.dismissAll();
+        router.push('/(tabs)');
+      }}>
+        <Text>SignIn Screen</Text>
+      </TouchableOpacity>
+      <SkeletonLoader />
     </View>
   )
 }

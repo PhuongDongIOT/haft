@@ -1,9 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-type Props = {}
-
-const CartScreen = (props: Props) => {
+interface CartScreenProps {}
+const CartScreen = (props: CartScreenProps) => {
   return (
     <View style={styles.container}>
       <Text>Cart Screen</Text>

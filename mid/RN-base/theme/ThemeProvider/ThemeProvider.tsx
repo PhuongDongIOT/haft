@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren, ReactNode } from 'react';
 import type { MMKV } from 'react-native-mmkv';
 import type {
   FulfilledThemeConfiguration,
@@ -33,22 +33,21 @@ import {
 import { generateGutters, staticGutterStyles } from '@/theme/gutters';
 import layout from '@/theme/layout';
 import generateConfig from '@/theme/ThemeProvider/generateConfig';
+import { MayBeType } from '@/types/maybe-type';
 
-type Context = Theme & {
+export type IThemeContext = Theme & {
   changeTheme: (variant: Variant) => void;
 };
+export const ThemeContext = createContext<MayBeType<IThemeContext>>(undefined);
 
-export const ThemeContext = createContext<Context | undefined>(undefined);
-
-type Props = PropsWithChildren<{
+type ThemeProviderProps = PropsWithChildren<{
   storage: MMKV;
+  children: ReactNode;
 }>;
 
-function ThemeProvider({ children = false, storage }: Props) {
+function ThemeProvider({ children, storage }: ThemeProviderProps) {
   // Current theme variant
-  const [variant, setVariant] = useState(
-    (storage.getString('theme') as Variant) || 'default',
-  );
+  const [variant, setVariant] = useState((storage.getString('theme') as Variant) || 'default');
 
   // Initialize theme at default if not defined
   useEffect(() => {

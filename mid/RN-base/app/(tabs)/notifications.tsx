@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react';
-import { useCounter } from '@/store/useCounter';
+import { useCounterStore } from '@/store/useCounterStore';
 import { useTheme } from '@/theme';
 
 interface NotificationsProps { }
@@ -10,7 +10,7 @@ const NotificationsScreen = (props: NotificationsProps) => {
     components,
     backgrounds
   } = useTheme();
-  const { click, incrementClick } = useCounter();
+  const { click, incrementClick } = useCounterStore();
 
   return (
     <View style={styles.container}>
